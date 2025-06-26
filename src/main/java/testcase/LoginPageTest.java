@@ -1,16 +1,33 @@
 package testcase;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import pageObject.LoginPage;
+import utility.Utility;
 
 public class LoginPageTest {
 
-    LoginPage loginPage = new LoginPage();
-    public void loginSuccessful(){
 
-        loginPage.loginUser();
-        boolean msg = loginPage.returnLoginSuccessfullMsg();
-        Assert.assertTrue(msg);
+    WebDriver driver;
+    LoginPage loginPage;
+    Utility utility;
+
+    @BeforeTest
+    public  void setUp(){
+        driver = new ChromeDriver();
+        loginPage = new LoginPage(driver);
+        utility = new Utility(driver);
+    }
+
+
+
+    @Test
+    public void TC01_loginSuccessful(){
+        loginPage.login("siddi","pw");
+
 
     }
 }

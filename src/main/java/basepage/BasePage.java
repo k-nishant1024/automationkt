@@ -7,10 +7,12 @@ import utility.Utility;
 public class BasePage {
 
     public WebDriver driver;
-    public Utility utility = new Utility();
+    public Utility utility ;
 
-    public BasePage(){
-        driver  = new ChromeDriver();
+    public BasePage(WebDriver driver){
+        this.driver = driver;
+        utility = new Utility(driver);
+        driver.get("https://www.saucedemo.com");
     }
 
 }
